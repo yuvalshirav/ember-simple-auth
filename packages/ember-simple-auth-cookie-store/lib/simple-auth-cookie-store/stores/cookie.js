@@ -125,10 +125,9 @@ export default Base.extend({
     @param {Object} data The data to persist
   */
   persist: function(data) {
-    data           = JSON.stringify(data || {});
     var expiration = this.calculateExpirationTime();
-    this.write(data, expiration);
-    this._lastData = this.restore();
+    this.write(JSON.stringify(data || {}), expiration);
+    this._lastData = data || {};
   },
 
   /**
